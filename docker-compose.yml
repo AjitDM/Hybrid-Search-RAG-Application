@@ -1,0 +1,8 @@
+services:
+  rag-app:
+    build: .
+    container_name: rag_app_container
+    env_file: .env        # 👈 loads your Groq/Pinecone/HF keys
+    ports:
+      - "8000:8000"       # maps container port 8000 → host port 8000
+    restart: unless-stopped

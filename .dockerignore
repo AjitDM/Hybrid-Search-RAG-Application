@@ -1,0 +1,14 @@
+.ipynb_checkpoints
+.git
+*.log
+.venv
+*.pyc
+*.pyo
+__pycache__
+.gitignore
+*.twbx
+*.docx
+streamlit_app.py
+*.csv
+Python commands.txt
+*.ipynb
