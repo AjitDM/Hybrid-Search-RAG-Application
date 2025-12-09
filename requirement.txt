@@ -1,0 +1,12 @@
+langchain_groq
+langchain_core
+langchain_community
+langchain_huggingface
+langchain_text_splitters
+sentence-transformers
+pinecone
+pinecone-text
+fastapi
+uvicorn
+PyPDF2
+streamlit
