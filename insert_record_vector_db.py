@@ -37,7 +37,7 @@ for i, page in enumerate(pdfreader.pages):
     if content:
         raw_text += content
 
-# We need to split the text using Character Text Split such that it sshould not increse token size
+# We need to split the text using Character Text Split such that it should not increse token size
 text_splitter = CharacterTextSplitter(
     separator = "\n",
     chunk_size = 800,
@@ -47,17 +47,20 @@ text_splitter = CharacterTextSplitter(
 texts = text_splitter.split_text(raw_text)
 
 ## tfidf values on these sentence
-bm25_encoder.fit(texts[:50])
+# bm25_encoder.fit(texts[:50])  #When we want to re-fit 
+                                # on whole corpora then uncomment this and fit.
 
 ## store the values to a json file
-bm25_encoder.dump("bm25_values.json")
+# bm25_encoder.dump("bm25_values.json")
 
 # load to your BM25Encoder object
-bm25_encoder = BM25Encoder().load("bm25_values.json")
+bm25_encoder = BM25Encoder().load(r"artifacts\bm25_values.json")
 
 retriever=PineconeHybridSearchRetriever(embeddings=embeddings,
                                         sparse_encoder=bm25_encoder,
                                         index=index,
                                         top_k=2 )
 
-retriever.add_texts( texts[:50])
+retriever.add_texts(texts[:50])
+
+__all__=['PdfReader', 'retriever', 'text_splitter']

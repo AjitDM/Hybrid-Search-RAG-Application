@@ -8,5 +8,6 @@ pinecone
 pinecone-text
 fastapi
 uvicorn
+python-multipart
 PyPDF2
 streamlit
